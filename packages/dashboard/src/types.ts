@@ -25,8 +25,8 @@ export interface KPICard {
 export interface ChartDataset {
   label: string;
   data: (number | null)[];
-  borderColor?: string;
-  backgroundColor?: string;
+  borderColor?: string | string[];
+  backgroundColor?: string | string[];
   fill?: boolean;
 }
 
