@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { ArrowUp, ArrowDown, TrendingFlat } from 'lucide-react';
+import { ArrowUp, ArrowDown, Minus } from 'lucide-react';
 import clsx from 'clsx';
 import { KPICard as KPICardType } from '../types';
 
@@ -97,7 +97,7 @@ export const KPICard: React.FC<KPICardProps> = ({
           <div className={clsx('inline-flex items-center gap-1 rounded px-2 py-1', changeBg)}>
             {isPositive && <ArrowUp size={16} className="text-green-600" />}
             {isNegative && <ArrowDown size={16} className="text-red-600" />}
-            {!isPositive && !isNegative && <TrendingFlat size={16} className="text-gray-600" />}
+            {!isPositive && !isNegative && <Minus size={16} className="text-gray-600" />}
             <span className={clsx('text-xs font-semibold', changeColor)}>
               {isPositive ? '+' : ''}
               {change}%

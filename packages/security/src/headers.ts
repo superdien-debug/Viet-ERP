@@ -75,7 +75,7 @@ export function securityHeaders(config: SecurityHeadersConfig = {}): Array<{
   } = config;
 
   // Merge frame-ancestors into CSP
-  const finalCSPDirectives = {
+  const finalCSPDirectives: Record<string, string[]> = {
     ...cspDirectives,
     'frame-ancestors': frameAncestors,
   };

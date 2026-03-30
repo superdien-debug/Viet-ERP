@@ -101,7 +101,7 @@ export function securityMiddleware(
     environment = process.env.NODE_ENV || 'development',
   } = config;
 
-  return (req: any, res: any, next: ExpressHandler) => {
+  return (req: any, res: any, next: any) => {
     // Apply security headers
     if (enableHeaders) {
       const secHeaders = environment === 'production'
