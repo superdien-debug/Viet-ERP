@@ -1,4 +1,4 @@
-import { SearchableEntity, SearchSyncPayload, DocumentIndexPayload } from './types';
+import { SearchableEntity, SearchModule, SearchSyncPayload, DocumentIndexPayload } from './types';
 import { Indexer } from './indexer';
 
 export class SearchSync {
@@ -246,7 +246,9 @@ export class SearchSync {
     result: unknown
   ): SearchSyncPayload | null {
     const resultData = result as Record<string, unknown>;
-    const documentId = String(resultData?.id || args?.data?.id || args?.where?.id);
+    const argsData = args?.data as Record<string, unknown> | undefined;
+    const argsWhere = args?.where as Record<string, unknown> | undefined;
+    const documentId = String(resultData?.id || argsData?.id || argsWhere?.id);
 
     if (!documentId) {
       console.warn(`No ID found for ${entity} sync operation`);
@@ -284,20 +286,20 @@ export class SearchSync {
   /**
    * Determine the module for an entity
    */
-  private getModuleForEntity(entity: SearchableEntity): string {
-    const mapping: Record<SearchableEntity, string> = {
-      [SearchableEntity.CUSTOMER]: 'crm',
-      [SearchableEntity.LEAD]: 'crm',
-      [SearchableEntity.PRODUCT]: 'inventory',
-      [SearchableEntity.ORDER]: 'sales',
-      [SearchableEntity.INVOICE]: 'accounting',
-      [SearchableEntity.EMPLOYEE]: 'hr',
-      [SearchableEntity.PROJECT]: 'project_management',
-      [SearchableEntity.TASK]: 'project_management',
-      [SearchableEntity.PRODUCTION_ORDER]: 'production',
-      [SearchableEntity.DOCUMENT]: 'document_management',
+  private getModuleForEntity(entity: SearchableEntity): SearchModule {
+    const mapping: Record<SearchableEntity, SearchModule> = {
+      [SearchableEntity.CUSTOMER]: SearchModule.CRM,
+      [SearchableEntity.LEAD]: SearchModule.CRM,
+      [SearchableEntity.PRODUCT]: SearchModule.INVENTORY,
+      [SearchableEntity.ORDER]: SearchModule.SALES,
+      [SearchableEntity.INVOICE]: SearchModule.ACCOUNTING,
+      [SearchableEntity.EMPLOYEE]: SearchModule.HR,
+      [SearchableEntity.PROJECT]: SearchModule.PROJECT_MANAGEMENT,
+      [SearchableEntity.TASK]: SearchModule.PROJECT_MANAGEMENT,
+      [SearchableEntity.PRODUCTION_ORDER]: SearchModule.PRODUCTION,
+      [SearchableEntity.DOCUMENT]: SearchModule.DOCUMENT_MANAGEMENT,
     };
-    return mapping[entity] || 'general';
+    return mapping[entity] || SearchModule.CRM;
   }
 
   /**

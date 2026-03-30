@@ -99,7 +99,7 @@ export class SearchClient {
             title: String(hit.title || ''),
             description: String(hit.description || ''),
             highlights,
-            score: hit._score ?? 0,
+            score: (hit._score as number) ?? 0,
             url: String(hit.url || ''),
             metadata: {
               ...hit,

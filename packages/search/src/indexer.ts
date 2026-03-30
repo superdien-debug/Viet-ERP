@@ -49,9 +49,11 @@ export class Indexer {
       // Index doesn't exist, create it
     }
 
-    const newIndex = await this.client.createIndex(indexName, {
+    await this.client.createIndex(indexName, {
       primaryKey: config.primaryKey,
     });
+    
+    const newIndex = this.client.index(indexName);
 
     // Configure Vietnamese settings
     const stopWords = vietnameseSettings?.customStopWords || [

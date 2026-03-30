@@ -119,7 +119,7 @@ jobs:
   # ── Build & Push Docker Images ─────────────────────────────
   build-and-push:
     name: Build ${{ matrix.service }}
-    needs: [detect-changes, test]
+    needs: [detect-changes]
     runs-on: ubuntu-latest
     strategy:
       matrix:

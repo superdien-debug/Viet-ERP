@@ -6,13 +6,13 @@
  */
 
 // Types
-export {
-  AuditAction,
+export type {
   AuditEntry,
   AuditQueryOptions,
   AuditContext,
   Change,
 } from "./types";
+export { AuditAction } from "./types";
 
 // Differ utilities
 export { computeDiff, maskSensitiveData } from "./differ";
@@ -21,7 +21,7 @@ export { computeDiff, maskSensitiveData } from "./differ";
 export { AuditMiddleware, withAudit } from "./middleware";
 
 // Store implementations
-export type { AuditStore };
+export type { AuditStore } from "./store";
 export { PrismaAuditStore, FileAuditStore } from "./store";
 
 // Query helpers

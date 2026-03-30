@@ -84,10 +84,10 @@ enum EmailStatus {
 
 enum ImportStatus {
   PENDING
-  PROCESSING
-  COMPLETED
+  SUCCESS
   FAILED
-  ROLLED_BACK
+  PROCESSING
+  DRY_RUN
 }
 
 enum WebhookStatus {
@@ -340,6 +340,14 @@ model Tenant {
   internalApplications InternalApplication[]
   careerProfiles       CareerProfile[]
 
+  
+  disciplinaryRecords DisciplinaryRecord[]
+  kpiPeriods KPIPeriod[]
+  kpiScores KPIScore[]
+  salaryAdvances SalaryAdvance[]
+  importSessions ImportSession[]
+  systemSettings SystemSetting[]
+
   @@map("tenants")
 }
 
@@ -445,6 +453,12 @@ model User {
   customRoles UserCustomRole[]
 
   @@unique([tenantId, email])
+  
+  createdKPIPeriods KPIPeriod[] @relation("KPICreator")
+  enteredKPIScores KPIScore[] @relation("KPIEnterer")
+  approvedSalaryAdvances SalaryAdvance[] @relation("AdvanceApprover")
+  importSessions ImportSession[] @relation("ImportUser")
+
   @@map("users")
 }
 
@@ -713,6 +727,11 @@ model Employee {
   @@index([tenantId, status])
   @@index([tenantId, departmentId])
   @@index([tenantId, fullName])
+  
+  disciplinaryRecords DisciplinaryRecord[]
+  kpiScores KPIScore[]
+  salaryAdvances SalaryAdvance[]
+
   @@map("employees")
 }
 
@@ -7204,14 +7223,7 @@ enum ImportType {
   POSITIONS
 }
 
-enum ImportStatus {
-  DRY_RUN
-  PREVIEWING
-  EXECUTING
-  COMPLETED
-  FAILED
-  ROLLED_BACK
-}
+
 
 model ImportSession {
   id            String       @id @default(cuid())

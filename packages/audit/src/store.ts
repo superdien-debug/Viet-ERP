@@ -285,10 +285,10 @@ export class FileAuditStore implements AuditStore {
         entries = entries.filter((e) => e.action === options.action);
       }
       if (options.dateFrom) {
-        entries = entries.filter((e) => e.timestamp >= options.dateFrom);
+        entries = entries.filter((e) => e.timestamp >= options.dateFrom!);
       }
       if (options.dateTo) {
-        entries = entries.filter((e) => e.timestamp <= options.dateTo);
+        entries = entries.filter((e) => e.timestamp <= options.dateTo!);
       }
 
       // Sort by timestamp descending

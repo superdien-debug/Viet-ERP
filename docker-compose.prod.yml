@@ -192,7 +192,7 @@ services:
 
   # Quản lý nhân sự AI / HRM AI Service
   hrm-ai:
-    image: ghcr.io/nclamvn/vierp-hrm-ai:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-hrm-ai:${IMAGE_TAG:-latest}
     container_name: vierp-hrm-ai
     restart: unless-stopped
     environment:
@@ -238,7 +238,7 @@ services:
 
   # Quản lý nhân sự thống nhất / HRM Unified Service
   hrm-unified:
-    image: ghcr.io/nclamvn/vierp-hrm-unified:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-hrm-unified:${IMAGE_TAG:-latest}
     container_name: vierp-hrm-unified
     restart: unless-stopped
     environment:
@@ -283,7 +283,7 @@ services:
 
   # API Quản lý dự án / TPM API (NestJS)
   tpm-api:
-    image: ghcr.io/nclamvn/vierp-tpm-api-nestjs:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-tpm-api-nestjs:${IMAGE_TAG:-latest}
     container_name: vierp-tpm-api
     restart: unless-stopped
     environment:
@@ -328,7 +328,7 @@ services:
 
   # Quản lý nhân sự / HRM Service
   hrm:
-    image: ghcr.io/nclamvn/vierp-hrm:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-hrm:${IMAGE_TAG:-latest}
     container_name: vierp-hrm
     restart: unless-stopped
     environment:
@@ -373,7 +373,7 @@ services:
 
   # Kế toán / Accounting Service
   accounting:
-    image: ghcr.io/nclamvn/vierp-accounting:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-accounting:${IMAGE_TAG:-latest}
     container_name: vierp-accounting
     restart: unless-stopped
     environment:
@@ -418,7 +418,7 @@ services:
 
   # Quản lý quan hệ khách hàng / CRM Service
   crm:
-    image: ghcr.io/nclamvn/vierp-crm:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-crm:${IMAGE_TAG:-latest}
     container_name: vierp-crm
     restart: unless-stopped
     environment:
@@ -463,7 +463,7 @@ services:
 
   # Thương mại điện tử / Ecommerce Service
   ecommerce:
-    image: ghcr.io/nclamvn/vierp-ecommerce:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-ecommerce:${IMAGE_TAG:-latest}
     container_name: vierp-ecommerce
     restart: unless-stopped
     environment:
@@ -508,7 +508,7 @@ services:
 
   # Quản lý sản xuất / MRP Service
   mrp:
-    image: ghcr.io/nclamvn/vierp-mrp:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-mrp:${IMAGE_TAG:-latest}
     container_name: vierp-mrp
     restart: unless-stopped
     environment:
@@ -553,7 +553,7 @@ services:
 
   # Khoảng thời gian / OTB Service
   otb:
-    image: ghcr.io/nclamvn/vierp-otb:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-otb:${IMAGE_TAG:-latest}
     container_name: vierp-otb
     restart: unless-stopped
     environment:
@@ -598,7 +598,7 @@ services:
 
   # Quản lý dự án / Project Management Service
   pm:
-    image: ghcr.io/nclamvn/vierp-pm:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-pm:${IMAGE_TAG:-latest}
     container_name: vierp-pm
     restart: unless-stopped
     environment:
@@ -643,7 +643,7 @@ services:
 
   # AI xử lý Excel / Excel AI Service
   excel-ai:
-    image: ghcr.io/nclamvn/vierp-excelai:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-excelai:${IMAGE_TAG:-latest}
     container_name: vierp-excel-ai
     restart: unless-stopped
     environment:
@@ -689,7 +689,7 @@ services:
 
   # Tài liệu / Documentation Web
   docs:
-    image: ghcr.io/nclamvn/vierp-docs:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-docs:${IMAGE_TAG:-latest}
     container_name: vierp-docs
     restart: unless-stopped
     environment:
@@ -720,7 +720,7 @@ services:
 
   # Giao diện web TPM / TPM Web UI
   tpm-web:
-    image: ghcr.io/nclamvn/vierp-tpm-web:${IMAGE_TAG:-latest}
+    image: ghcr.io/superdien-debug/vierp-tpm-web:${IMAGE_TAG:-latest}
     container_name: vierp-tpm-web
     restart: unless-stopped
     environment:

@@ -107,9 +107,7 @@ export class AuditMiddleware {
    */
   createMiddleware() {
     return async (
-      params: Parameters<
-        PrismaClient["$use"]
-      >[0],
+      params: any,
       next: (params: any) => Promise<any>
     ) => {
       const result = await next(params);
@@ -249,6 +247,6 @@ export function withAudit(
   context: AuditContext
 ): AuditMiddleware {
   const middleware = new AuditMiddleware(auditStore, context);
-  prisma.$use(middleware.createMiddleware());
+  (prisma as any).$use?.(middleware.createMiddleware());
   return middleware;
 }

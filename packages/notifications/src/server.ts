@@ -3,10 +3,9 @@
  */
 
 import { WebSocketServer, WebSocket } from 'ws';
-import { IncomingMessage } from 'http';
+import { IncomingMessage as HttpIncomingMessage } from 'http';
 import { Notification, NotificationPayload } from './types';
 import { NotificationStore, InMemoryStore } from './store';
-import { v4 as uuidv4 } from 'crypto';
 
 interface UserConnection {
   ws: WebSocket;
@@ -59,7 +58,7 @@ export class NotificationServer {
   }
 
   private setupConnectionHandler(): void {
-    this.wss.on('connection', (ws: WebSocket, req: IncomingMessage) => {
+    this.wss.on('connection', (ws: WebSocket, req: HttpIncomingMessage) => {
       let userConnection: UserConnection = {
         ws,
         userId: '',

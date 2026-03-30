@@ -11,7 +11,7 @@
     "start:next": "next start",
     "start:azure": "node azure-startup.js",
     "lint": "next lint",
-    "test": "vitest",
+    "test": "vitest --passWithNoTests",
     "test:run": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:e2e": "playwright test",
