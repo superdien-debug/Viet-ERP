@@ -13,7 +13,7 @@ const dictionaries = { vi, en } as const
 interface TranslationContextValue {
   locale: Locale
   setLocale: (locale: Locale) => void
-  t: (key: TranslationKey | (string & {}), params?: Record<string, string | number>) => string
+  t: (key: TranslationKey | (string & Record<never, never>), params?: Record<string, string | number>) => string
 }
 
 const TranslationContext = createContext<TranslationContextValue | null>(null)
@@ -38,7 +38,7 @@ export function TranslationProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const t = useCallback(
-    (key: TranslationKey | (string & {}), params?: Record<string, string | number>): string => {
+    (key: TranslationKey | (string & Record<never, never>), params?: Record<string, string | number>): string => {
       const k = key as TranslationKey
       let value: string = dictionaries[locale]?.[k] ?? dictionaries.vi[k] ?? key
       if (params) {

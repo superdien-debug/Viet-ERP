@@ -14,13 +14,7 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "paths": {
-      "@erp/shared": ["../shared/src"],
-      "@erp/database": ["../database/src"],
-      "@erp/events": ["../events/src"],
-      "@erp/auth": ["../auth/src"]
-    }
+    "isolatedModules": true
   },
   "include": ["src/**/*.ts"],
   "exclude": ["node_modules", "dist", "**/*.test.ts"]

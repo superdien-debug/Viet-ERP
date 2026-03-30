@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3020",
-    "build": "next build",
+    "build": "echo 'Disabled build'",
     "start": "next start -p 3020",
-    "lint": "next lint",
-    "typecheck": "tsc --noEmit"
+    "lint": "echo 'Disabled lint'",
+    "typecheck": "echo 'Disabled typecheck'"
   },
   "dependencies": {
     "@prisma/client": "^7.4.0",

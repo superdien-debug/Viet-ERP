@@ -26,7 +26,7 @@ import type { z } from 'zod';
  */
 export class EventBus {
   private config: EventBusConfig;
-  private subscriptions: Map<string, TypedEventHandler> = new Map();
+  private subscriptions: Map<string, TypedEventHandler<any>> = new Map();
 
   constructor(config: EventBusConfig) {
     this.config = config;
@@ -56,7 +56,7 @@ export class EventBus {
     const validatedPayload = schema.parse(payload);
 
     const correlationId = context.correlationId || generateCorrelationId();
-    const causationId = context.causationId || generateCausationId();
+    const causationId = context.causationId || undefined;
 
     const event: BaseEvent = {
       id: `${Date.now().toString(36)}-${Math.random().toString(36).substring(2, 9)}`,
@@ -125,7 +125,7 @@ export class EventBus {
         ackPolicy: 'explicit' as const,
       };
 
-      const sub = await js.subscribe(eventType as string, opts);
+      const sub = await js.subscribe(eventType as string, opts as any);
 
       // Start consuming
       (async () => {
@@ -140,8 +140,10 @@ export class EventBus {
             };
 
             // Process and handle event
-            await processIncomingEvent(event);
-            await handler(event);
+            const envelope: any = { ...event, data: event.payload, version: (event as any).version || 1 };
+            const processed = processIncomingEvent(envelope);
+            event.payload = processed.data;
+            await handler(event as any);
 
             // Acknowledge successful processing
             msg.ack();
@@ -205,7 +207,7 @@ export class EventBus {
     const results: BaseEvent[] = [];
 
     for (const [index, { eventType, payload }] of events.entries()) {
-      const causationId = index === 0 ? generateCausationId() : undefined;
+      const causationId = index === 0 ? correlationId : undefined;
 
       const event = await this.publish(eventType, payload, {
         ...context,

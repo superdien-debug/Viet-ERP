@@ -4,7 +4,7 @@
 // ============================================================
 
 // CRM Schemas
-export {
+import {
   LeadCreatedSchema,
   LeadScoredSchema,
   LeadConvertedSchema,
@@ -12,6 +12,14 @@ export {
   DealLostSchema,
   CRMEventSchemas,
 } from './crm.events';
+export {
+  LeadCreatedSchema,
+  LeadScoredSchema,
+  LeadConvertedSchema,
+  DealWonSchema,
+  DealLostSchema,
+  CRMEventSchemas,
+};
 export type {
   LeadCreated,
   LeadScored,
@@ -21,7 +29,7 @@ export type {
 } from './crm.events';
 
 // Accounting Schemas
-export {
+import {
   InvoiceCreatedSchema,
   InvoiceApprovedSchema,
   InvoicePaidSchema,
@@ -29,6 +37,14 @@ export {
   JournalEntryPostedSchema,
   AccountingEventSchemas,
 } from './accounting.events';
+export {
+  InvoiceCreatedSchema,
+  InvoiceApprovedSchema,
+  InvoicePaidSchema,
+  PaymentReceivedSchema,
+  JournalEntryPostedSchema,
+  AccountingEventSchemas,
+};
 export type {
   InvoiceCreated,
   InvoiceApproved,
@@ -38,7 +54,7 @@ export type {
 } from './accounting.events';
 
 // Ecommerce Schemas
-export {
+import {
   OrderPlacedSchema,
   OrderShippedSchema,
   OrderDeliveredSchema,
@@ -46,6 +62,14 @@ export {
   PaymentCompletedSchema,
   EcommerceEventSchemas,
 } from './ecommerce.events';
+export {
+  OrderPlacedSchema,
+  OrderShippedSchema,
+  OrderDeliveredSchema,
+  OrderCancelledSchema,
+  PaymentCompletedSchema,
+  EcommerceEventSchemas,
+};
 export type {
   OrderPlaced,
   OrderShipped,
@@ -55,7 +79,7 @@ export type {
 } from './ecommerce.events';
 
 // MRP Schemas
-export {
+import {
   ProductionOrderCreatedSchema,
   ProductionCompletedSchema,
   InventoryUpdatedSchema,
@@ -63,6 +87,14 @@ export {
   QualityCheckPassedSchema,
   MRPEventSchemas,
 } from './mrp.events';
+export {
+  ProductionOrderCreatedSchema,
+  ProductionCompletedSchema,
+  InventoryUpdatedSchema,
+  StockLowSchema,
+  QualityCheckPassedSchema,
+  MRPEventSchemas,
+};
 export type {
   ProductionOrderCreated,
   ProductionCompleted,
@@ -72,7 +104,7 @@ export type {
 } from './mrp.events';
 
 // HRM Schemas
-export {
+import {
   EmployeeOnboardedSchema,
   LeaveRequestedSchema,
   LeaveApprovedSchema,
@@ -80,6 +112,14 @@ export {
   AttendanceRecordedSchema,
   HRMEventSchemas,
 } from './hrm.events';
+export {
+  EmployeeOnboardedSchema,
+  LeaveRequestedSchema,
+  LeaveApprovedSchema,
+  PayrollProcessedSchema,
+  AttendanceRecordedSchema,
+  HRMEventSchemas,
+};
 export type {
   EmployeeOnboarded,
   LeaveRequested,

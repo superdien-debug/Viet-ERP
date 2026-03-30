@@ -7,8 +7,6 @@
 // ─── Core Types ─────────────────────────────────────────────
 export {
   Module,
-  EventBus,
-  createEventBus,
 } from './types';
 export type {
   BaseEvent,
@@ -143,7 +141,6 @@ export {
 // ─── Legacy API (backward compatibility) ────────────────────
 export { publish, publishBatch } from './publisher';
 export { subscribe } from './subscriber';
-export type { EventHandler } from './subscriber';
 export {
   getConnection,
   getJetStream,

@@ -8,7 +8,6 @@ import {
   LineChart,
   BarChart,
   PieChart,
-  DoughnutChart,
   Line,
   Bar,
   Pie,
@@ -97,7 +96,7 @@ export const ChartWidget: React.FC<ChartWidgetProps> = ({
                   key={idx}
                   type="monotone"
                   dataKey="value"
-                  stroke={dataset.borderColor || COLORS[idx % COLORS.length]}
+                  stroke={Array.isArray(dataset.borderColor) ? dataset.borderColor[0] : (dataset.borderColor || COLORS[idx % COLORS.length])}
                   dot={false}
                   strokeWidth={2}
                 />
@@ -116,7 +115,7 @@ export const ChartWidget: React.FC<ChartWidgetProps> = ({
                 <Bar
                   key={idx}
                   dataKey="value"
-                  fill={dataset.backgroundColor || COLORS[idx % COLORS.length]}
+                  fill={Array.isArray(dataset.backgroundColor) ? dataset.backgroundColor[0] : (dataset.backgroundColor || COLORS[idx % COLORS.length])}
                   radius={[4, 4, 0, 0]}
                 />
               ))}
